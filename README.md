@@ -1,4 +1,4 @@
-# Fiber with JWT
+# goFiber with JWT + Admin Dashboard
 https://github.com/gofiber/recipes/tree/master/jwt
 
 
