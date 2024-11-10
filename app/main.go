@@ -39,7 +39,7 @@ func main() {
 
 	// Routes
 	router.HTMLRoutes(app)
-	router.AuthRoutes(app)
+	//router.AuthRoutes(app)
 	router.ProductsRoutes(app)
 
 	log.Fatal(app.Listen(":3004"))

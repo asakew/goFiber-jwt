@@ -8,7 +8,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// SetupRoutes setup router api
 func ProductsRoutes(app *fiber.App) {
 	api := app.Group("/api", logger.New())
 
