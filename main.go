@@ -33,8 +33,9 @@ func main() {
 	app.Use(recover.New())
 	app.Use(cors.New())
 
-	database.ConnectDB()
+	database.ConnectDB() // Connect to db
 
-	router.SetupRoutes(app)
+	router.SetupRoutes(app) // Setup routes
+
 	log.Fatal(app.Listen(":3001"))
 }
