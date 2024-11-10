@@ -35,7 +35,10 @@ func main() {
 
 	database.ConnectDB() // Connect to db
 
-	router.SetupRoutes(app) // Setup routes
+	// Routes
+	router.HTMLRoutes(app)
+	router.AuthRoutes(app)
+	router.ProductsRoutes(app)
 
 	log.Fatal(app.Listen(":3001"))
 }
