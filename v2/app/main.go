@@ -1,13 +1,14 @@
 package main
 
 import (
-	jwtware "	github.com/gofiber/contrib/jwt"
+	jwtware "github.com/gofiber/contrib/jwt"
+	//jwtware "	github.com/gofiber/contrib/jwt"
 	"github.com/gofiber/fiber/v2"
 	"log"
 	"os"
 	"v2/internal/database"
 	"v2/internal/handlers"
-	"v2/internal/middlewares"
+	//"v2/internal/middlewares"
 )
 
 func main() {
@@ -21,13 +22,13 @@ func main() {
 
 	api := app.Group("/api")
 
-	// Book
-	book := api.Group("/books")
-	book.Get("/", handlers.GetBooks)
-	book.Get("/:id", handlers.GetBook)
-	book.Post("/", middlewares.JWTProtected, handlers.CreateBook)
-	book.Patch("/:id", middlewares.JWTProtected, handlers.UpdateBook)
-	book.Delete("/:id", middlewares.JWTProtected, handlers.DeleteBook)
+	//// Book
+	//book := api.Group("/books")
+	//book.Get("/", handlers.GetBooks)
+	//book.Get("/:id", handlers.GetBook)
+	//book.Post("/", middlewares.JWTProtected, handlers.CreateBook)
+	//book.Patch("/:id", middlewares.JWTProtected, handlers.UpdateBook)
+	//book.Delete("/:id", middlewares.JWTProtected, handlers.DeleteBook)
 
 	// Auth
 	auth := api.Group("/auth")
