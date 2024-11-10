@@ -1,8 +1,8 @@
 package router
 
 import (
-	"api-fiber-gorm/handlers"
-	"api-fiber-gorm/middlewares"
+	"api-fiber-gorm/internal/handlers"
+	"api-fiber-gorm/internal/middlewares"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 
 	"github.com/gofiber/fiber/v2"

@@ -1,4 +1,3 @@
-// models/post.go
 package models
 
 import "gorm.io/gorm"

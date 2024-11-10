@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"api-fiber-gorm/database"
-	"api-fiber-gorm/models"
+	"api-fiber-gorm/internal/database"
+	"api-fiber-gorm/internal/models"
 
 	"github.com/gofiber/fiber/v2"
 )
