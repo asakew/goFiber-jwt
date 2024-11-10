@@ -33,12 +33,14 @@ func main() {
 	app.Use(recover.New())
 	app.Use(cors.New())
 
-	database.ConnectDB() // Connect to db
+	// Connect to database
+	database.ConnectBookDB()
+	database.ConnectPostDB()
 
 	// Routes
 	router.HTMLRoutes(app)
 	router.AuthRoutes(app)
 	router.ProductsRoutes(app)
 
-	log.Fatal(app.Listen(":3001"))
+	log.Fatal(app.Listen(":3004"))
 }

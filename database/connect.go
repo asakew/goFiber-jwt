@@ -2,18 +2,18 @@ package database
 
 import (
 	"api-fiber-gorm/config"
-	"api-fiber-gorm/model"
+	"api-fiber-gorm/models"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"log"
 	"strconv"
 )
 
-// DB gorm connector
-var DB *gorm.DB
+var BookDB *gorm.DB
+var PostDB *gorm.DB
 
-// ConnectDB connect to db
-func ConnectDB() {
+func ConnectBookDB() {
 	var err error
 	p := config.Config("DB_PORT")
 	port, err := strconv.ParseUint(p, 10, 32)
@@ -21,7 +21,7 @@ func ConnectDB() {
 		panic(err)
 	}
 
-	DB, err = gorm.Open(postgres.Open(fmt.Sprintf(
+	BookDB, err = gorm.Open(postgres.Open(fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		config.Config("DB_HOST"),
 		port,
@@ -34,6 +34,20 @@ func ConnectDB() {
 	}
 
 	fmt.Println("Connection Opened to Database")
-	DB.AutoMigrate(&model.Product{})
+
+	err = BookDB.AutoMigrate(&models.Product{})
+	if err != nil {
+		return
+	}
+
 	fmt.Println("Database Migrated")
+}
+
+func ConnectPostDB() {
+	var err error
+	dsn := "host=localhost port=5432 user=postgres password=Root dbname=posts_db sslmode=disable"
+	PostDB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		log.Fatal("Failed to connect to database:", err)
+	}
 }

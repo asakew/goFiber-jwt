@@ -1,17 +1,19 @@
 package router
 
 import (
-	"api-fiber-gorm/handler"
+	"api-fiber-gorm/handlers"
+	"api-fiber-gorm/middlewares"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 // SetupRoutes setup router api
 func AuthRoutes(app *fiber.App) {
-	// Middleware
-	api := app.Group("/api", logger.New())
+	// JWT Middleware for secure routes
+	app.Use("/admin", middlewares.JwtMiddleware())
 
-	// Auth
-	auth := api.Group("/auth")
-	auth.Post("/login", handler.Login)
+	// Setup routes
+	app.Get("/admin/posts", handlers.GetPosts)
+	app.Post("/admin/posts", handlers.CreatePost)
+	app.Put("/admin/posts/:id", handlers.UpdatePost)
+	app.Delete("/admin/posts/:id", handlers.DeletePost)
 }
